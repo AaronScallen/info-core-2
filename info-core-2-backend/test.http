@@ -1,0 +1,22 @@
+# Test Registration
+
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "password123",
+  "role": "officer"
+}
+
+###
+
+# Test Login
+
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "password123"
+}

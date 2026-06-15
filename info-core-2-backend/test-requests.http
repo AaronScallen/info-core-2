@@ -1,0 +1,290 @@
+### Example REST Client requests for testing the API
+### Install "REST Client" extension in VS Code to use this file
+### Click "Send Request" above each request to execute it
+
+@baseUrl = http://localhost:3001/api
+@token = YOUR_TOKEN_HERE
+
+### ============================================================================
+### AUTH ROUTES
+### ============================================================================
+
+### Register new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "password123",
+  "role": "officer"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "password123"
+}
+
+### ============================================================================
+### EMPLOYEES
+### ============================================================================
+
+### Get all employees
+GET {{baseUrl}}/employees
+Authorization: Bearer {{token}}
+
+### Get employee by ID
+GET {{baseUrl}}/employees/56277
+Authorization: Bearer {{token}}
+
+### Create employee
+POST {{baseUrl}}/employees
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "enumber": 56277,
+  "badge": 1234,
+  "positionNumber": 5678,
+  "pid": 9012,
+  "dob": "1990-01-01",
+  "lastName": "Doe",
+  "firstName": "John",
+  "assignmentId": 515,
+  "bwcId": 17916,
+  "vehId": 805009,
+  "cellphoneId": 1
+}
+
+### Update employee
+PUT {{baseUrl}}/employees/56277
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lastName": "Smith",
+  "firstName": "Jane"
+}
+
+### Delete employee
+DELETE {{baseUrl}}/employees/56277
+Authorization: Bearer {{token}}
+
+### ============================================================================
+### ASSIGNMENTS
+### ============================================================================
+
+### Get all assignments
+GET {{baseUrl}}/assignments
+Authorization: Bearer {{token}}
+
+### Get assignment by ID
+GET {{baseUrl}}/assignments/1
+Authorization: Bearer {{token}}
+
+### Create assignment
+POST {{baseUrl}}/assignments
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "assnId": 515,
+  "locationName": "District 1"
+}
+
+### Update assignment
+PUT {{baseUrl}}/assignments/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "locationName": "District 2"
+}
+
+### Delete assignment
+DELETE {{baseUrl}}/assignments/1
+Authorization: Bearer {{token}}
+
+### ============================================================================
+### BODYCAMS
+### ============================================================================
+
+### Get all bodycams
+GET {{baseUrl}}/bodycams
+Authorization: Bearer {{token}}
+
+### Get bodycam by ID
+GET {{baseUrl}}/bodycams/17916
+Authorization: Bearer {{token}}
+
+### Create bodycam
+POST {{baseUrl}}/bodycams
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "bwcId": 17916,
+  "device": "Axon Body 3",
+  "locator": "A-123",
+  "model": "Body 3",
+  "wifiMacAddress": "00:11:22:33:44:55"
+}
+
+### Update bodycam
+PUT {{baseUrl}}/bodycams/17916
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "locator": "B-456"
+}
+
+### Delete bodycam
+DELETE {{baseUrl}}/bodycams/17916
+Authorization: Bearer {{token}}
+
+### ============================================================================
+### POLICE VEHICLES
+### ============================================================================
+
+### Get all vehicles
+GET {{baseUrl}}/vehicles
+Authorization: Bearer {{token}}
+
+### Get vehicle by ID
+GET {{baseUrl}}/vehicles/805009
+Authorization: Bearer {{token}}
+
+### Create vehicle
+POST {{baseUrl}}/vehicles
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "vehId": 805009,
+  "unitNumber": 123,
+  "color": "Black/White",
+  "year": 2023,
+  "make": "Ford",
+  "model": "Explorer",
+  "decals": true,
+  "vin": "1FMCU9GD7KUA12345",
+  "lpNumber": "ABC123"
+}
+
+### Update vehicle
+PUT {{baseUrl}}/vehicles/805009
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "unitNumber": 124,
+  "year": 2024
+}
+
+### Delete vehicle
+DELETE {{baseUrl}}/vehicles/805009
+Authorization: Bearer {{token}}
+
+### ============================================================================
+### CELL PHONES
+### ============================================================================
+
+### Get all cell phones
+GET {{baseUrl}}/cellphones
+Authorization: Bearer {{token}}
+
+### Get cell phone by ID
+GET {{baseUrl}}/cellphones/1
+Authorization: Bearer {{token}}
+
+### Create cell phone
+POST {{baseUrl}}/cellphones
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "idShort": 123,
+  "phoneNum": "555-1234",
+  "make": "Apple",
+  "model": "iPhone 14"
+}
+
+### Update cell phone
+PUT {{baseUrl}}/cellphones/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "phoneNum": "555-5678"
+}
+
+### Delete cell phone
+DELETE {{baseUrl}}/cellphones/1
+Authorization: Bearer {{token}}
+
+### ============================================================================
+### ABSENCES
+### ============================================================================
+
+### Get all absences
+GET {{baseUrl}}/absences
+Authorization: Bearer {{token}}
+
+### Get absence by ID
+GET {{baseUrl}}/absences/1
+Authorization: Bearer {{token}}
+
+### Create absence
+POST {{baseUrl}}/absences
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "enumber": 56277,
+  "assignment": "District 1",
+  "coveringEmpId": 12345,
+  "dateOfEntry": "2025-12-17T10:00:00Z",
+  "notes": "Sick leave"
+}
+
+### Update absence
+PUT {{baseUrl}}/absences/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "notes": "Updated: Medical leave"
+}
+
+### Delete absence
+DELETE {{baseUrl}}/absences/1
+Authorization: Bearer {{token}}
+
+### ============================================================================
+### USERS
+### ============================================================================
+
+### Get all users
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+
+### Get user by ID
+GET {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+
+### Update user
+PUT {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "role": "supervisor"
+}
+
+### Delete user
+DELETE {{baseUrl}}/users/1
+Authorization: Bearer {{token}}

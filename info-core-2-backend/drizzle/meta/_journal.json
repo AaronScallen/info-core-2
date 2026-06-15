@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1766003613186,
+      "tag": "0000_eminent_bill_hollister",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1766167803158,
+      "tag": "0001_high_marten_broadcloak",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1766435026605,
+      "tag": "0002_glossy_tigra",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1768420892863,
+      "tag": "0003_polite_doctor_strange",
+      "breakpoints": true
+    }
+  ]
+}

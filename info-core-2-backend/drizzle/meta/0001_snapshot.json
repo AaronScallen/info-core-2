@@ -1,0 +1,533 @@
+{
+  "id": "6c7ed3fb-cd44-4df9-9a33-914428bd6a64",
+  "prevId": "0e50c7b5-7235-460f-88a6-ac809cea43e1",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.absences": {
+      "name": "absences",
+      "schema": "",
+      "columns": {
+        "absence_id": {
+          "name": "absence_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "enumber": {
+          "name": "enumber",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "assignment": {
+          "name": "assignment",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "covering_emp_id": {
+          "name": "covering_emp_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_of_entry": {
+          "name": "date_of_entry",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "absences_enumber_employees_enumber_fk": {
+          "name": "absences_enumber_employees_enumber_fk",
+          "tableFrom": "absences",
+          "tableTo": "employees",
+          "columnsFrom": [
+            "enumber"
+          ],
+          "columnsTo": [
+            "enumber"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "absences_covering_emp_id_employees_enumber_fk": {
+          "name": "absences_covering_emp_id_employees_enumber_fk",
+          "tableFrom": "absences",
+          "tableTo": "employees",
+          "columnsFrom": [
+            "covering_emp_id"
+          ],
+          "columnsTo": [
+            "enumber"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assignments": {
+      "name": "assignments",
+      "schema": "",
+      "columns": {
+        "assignment_id": {
+          "name": "assignment_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "assn_id": {
+          "name": "assn_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "location_name": {
+          "name": "location_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "assignments_assn_id_unique": {
+          "name": "assignments_assn_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "assn_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.bodycams": {
+      "name": "bodycams",
+      "schema": "",
+      "columns": {
+        "bwc_id": {
+          "name": "bwc_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "device": {
+          "name": "device",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "locator": {
+          "name": "locator",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model": {
+          "name": "model",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "wifi_mac_address": {
+          "name": "wifi_mac_address",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.cell_phones": {
+      "name": "cell_phones",
+      "schema": "",
+      "columns": {
+        "phone_id": {
+          "name": "phone_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "id_short": {
+          "name": "id_short",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_num": {
+          "name": "phone_num",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "make": {
+          "name": "make",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model": {
+          "name": "model",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.employees": {
+      "name": "employees",
+      "schema": "",
+      "columns": {
+        "enumber": {
+          "name": "enumber",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "badge": {
+          "name": "badge",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "position_number": {
+          "name": "position_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pid": {
+          "name": "pid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dob": {
+          "name": "dob",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "photo_url": {
+          "name": "photo_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "assignment_id": {
+          "name": "assignment_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bwc_id": {
+          "name": "bwc_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "veh_id": {
+          "name": "veh_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cellphone_id": {
+          "name": "cellphone_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "employees_assignment_id_assignments_assn_id_fk": {
+          "name": "employees_assignment_id_assignments_assn_id_fk",
+          "tableFrom": "employees",
+          "tableTo": "assignments",
+          "columnsFrom": [
+            "assignment_id"
+          ],
+          "columnsTo": [
+            "assn_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "employees_bwc_id_bodycams_bwc_id_fk": {
+          "name": "employees_bwc_id_bodycams_bwc_id_fk",
+          "tableFrom": "employees",
+          "tableTo": "bodycams",
+          "columnsFrom": [
+            "bwc_id"
+          ],
+          "columnsTo": [
+            "bwc_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "employees_veh_id_police_vehicles_veh_id_fk": {
+          "name": "employees_veh_id_police_vehicles_veh_id_fk",
+          "tableFrom": "employees",
+          "tableTo": "police_vehicles",
+          "columnsFrom": [
+            "veh_id"
+          ],
+          "columnsTo": [
+            "veh_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "employees_cellphone_id_cell_phones_phone_id_fk": {
+          "name": "employees_cellphone_id_cell_phones_phone_id_fk",
+          "tableFrom": "employees",
+          "tableTo": "cell_phones",
+          "columnsFrom": [
+            "cellphone_id"
+          ],
+          "columnsTo": [
+            "phone_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "employees_badge_unique": {
+          "name": "employees_badge_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "badge"
+          ]
+        },
+        "employees_position_number_unique": {
+          "name": "employees_position_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "position_number"
+          ]
+        },
+        "employees_pid_unique": {
+          "name": "employees_pid_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "pid"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.police_vehicles": {
+      "name": "police_vehicles",
+      "schema": "",
+      "columns": {
+        "veh_id": {
+          "name": "veh_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "unit_number": {
+          "name": "unit_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "color": {
+          "name": "color",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "make": {
+          "name": "make",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model": {
+          "name": "model",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "decals": {
+          "name": "decals",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "vin": {
+          "name": "vin",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lp_number": {
+          "name": "lp_number",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'officer'"
+        },
+        "employee_id": {
+          "name": "employee_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "users_employee_id_employees_enumber_fk": {
+          "name": "users_employee_id_employees_enumber_fk",
+          "tableFrom": "users",
+          "tableTo": "employees",
+          "columnsFrom": [
+            "employee_id"
+          ],
+          "columnsTo": [
+            "enumber"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_username_unique": {
+          "name": "users_username_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "username"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "dispatch",
+        "officer",
+        "supervisor",
+        "command_staff"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

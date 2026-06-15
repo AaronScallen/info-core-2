@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Environment variables (IMPORTANT: Secrets here!)
+.env
+.env.local
+.env.*.local
+
+# TypeScript compiled output - all generated files should be ignored
+dist/
+*.js
+*.d.ts
+*.d.ts.map
+*.js.map
+drizzle.config.js
+drizzle.config.d.ts
+drizzle.config.d.ts.map
+drizzle.config.js.map
+
+# Build and logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
