@@ -40,7 +40,7 @@ export function EmergencyAlertBanner() {
     if (!AudioCtx) return;
 
     try {
-      const ctx = new AudioCtx();
+      const ctx = new AudioCtx() as AudioContext;
 
       const createBeep = (
         startAt: number,

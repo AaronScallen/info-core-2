@@ -1,11 +1,47 @@
 # Info Core 2
 
-Info Core 2 is a full-stack law enforcement resource management application with:
+Info Core 2 is a full-stack law enforcement resource management platform built to help agencies organize personnel, track assets, manage assignments, and move quickly in operational workflows. It combines a modern web UI, a structured API, and a PostgreSQL/Neon-backed data layer into a single product that is ready to demo, pilot, or showcase.
 
-- A Next.js frontend (App Router + TypeScript)
-- An Express + TypeScript backend API
-- PostgreSQL/Neon database access via Drizzle ORM
-- JWT authentication and role-based access control
+## What It Can Do
+
+Info Core 2 is designed around day-to-day operational visibility and administrative control:
+
+- Secure login with JWT-based authentication
+- Role-aware access control for officer, dispatch, supervisor, and command staff workflows
+- Personnel management for creating, updating, and reviewing employee records
+- Assignment tracking for active work, status changes, and operational follow-up
+- Equipment and asset tracking for bodycams, vehicles, and cell phones
+- Absence management for monitoring time away and availability
+- User administration for managing access and keeping the system organized
+- Active alerts workflows for surfacing urgent operational items quickly
+- Database export, import, migration, and reset utilities for managing data across environments
+- Drizzle-powered schema management with PostgreSQL/Neon support
+
+## Product Highlights
+
+- Built as a split frontend/backend application for clear separation of concerns
+- Uses TypeScript across the stack for maintainability and safer iteration
+- Structured for internal operations, demonstrations, and sales presentations
+- Supports operational workflows that can be shown live in a short demo or sales walkthrough
+- Includes supporting scripts and documentation for database migration and seeded demo access
+- Designed to present as a practical, usable system rather than a static prototype
+
+## Demo Video
+
+Use this space to show the app in action. The included clip lives at `demo-media/InfoCore.mp4` and can be embedded directly on a site or in a README-compatible preview.
+
+```html
+<video controls width="100%" poster="/demo-thumbnail.png">
+  <source src="demo-media/InfoCore.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+```
+
+If you prefer a clickable thumbnail instead:
+
+```markdown
+[![Watch the demo](demo-thumbnail.png)](demo-media/InfoCore.mp4)
+```
 
 ## Repository Layout
 
@@ -14,21 +50,6 @@ info-core-2/
 ├── info-core-front/        # Next.js frontend
 └── info-core-2-backend/    # Express API + Drizzle + scripts
 ```
-
-## Core Features
-
-- Authentication (register/login with JWT)
-- Role-aware access control (officer, dispatch, supervisor, command_staff)
-- CRUD modules for:
-  - Employees
-  - Assignments
-  - Bodycams
-  - Vehicles
-  - Cell Phones
-  - Absences
-  - Users
-- Active alerts workflows
-- Data migration/export utilities for Neon/PostgreSQL
 
 ## Tech Stack
 
@@ -47,139 +68,34 @@ info-core-2/
 - PostgreSQL / Neon
 - JWT + bcrypt
 
-## Prerequisites
+## Run Locally
 
-- Node.js 20+
-- npm 10+
-- PostgreSQL (local) or a Neon database
+The project is set up as two separate apps:
 
-## Quick Start
+1. Install dependencies in both `info-core-2-backend` and `info-core-front`.
+2. Configure the backend environment variables.
+3. Push the database schema.
+4. Start the backend and frontend in separate terminals.
 
-### 1. Install dependencies
+If you are using the repo as a showcase or sales demo, you can keep these instructions in the appendix and focus most viewers on the capability sections above.
 
-Install frontend and backend dependencies separately:
+For a public-facing README, you can also move this section below the fold or replace it with a short "Request access" note.
 
-```bash
-cd info-core-2-backend
-npm install
+## Local Development Notes
 
-cd ../info-core-front
-npm install
-```
-
-### 2. Configure backend environment
-
-In info-core-2-backend, copy .env.example to .env and set values:
-
-```env
-PORT=3001
-NODE_ENV=development
-DATABASE_URL=postgresql://user:password@localhost:5432/database_name
-JWT_SECRET=replace_with_secure_random_value
-FRONTEND_URL=http://localhost:3000
-```
-
-### 3. Push database schema
-
-```bash
-cd info-core-2-backend
-npm run db:push
-```
-
-### 4. Start backend
-
-```bash
-cd info-core-2-backend
-npm run dev
-```
-
-Backend runs on:
-
-- http://localhost:3001
-- API base: http://localhost:3001/api
-
-### 5. Start frontend
-
-In a second terminal:
-
-```bash
-cd info-core-front
-npm run dev
-```
-
-Frontend runs on:
-
-- http://localhost:3000
-
-## Important Local Dev Note
-
-The frontend currently calls the backend using hardcoded URLs at http://localhost:3001 in multiple pages. Run both apps on their default local ports unless you update those fetch URLs.
-
-## Backend Scripts
-
-From info-core-2-backend:
-
-- npm run dev: Start backend in watch mode
-- npm run build: Compile TypeScript
-- npm run start: Run compiled server
-- npm run db:push: Push Drizzle schema
-- npm run db:studio: Open Drizzle Studio
-- npm run export:data: Export data for migration
-- npm run import:data: Import data into target database
-- npm run reset:neon: Reset Neon-side data/state script
-- npm run seed:demo-users: Seed demo login accounts
-- npm run db:add-indexes: Add database indexes
-
-## Frontend Scripts
-
-From info-core-front:
-
-- npm run dev: Start Next.js dev server
-- npm run build: Build production bundle
-- npm run start: Start production server
-- npm run lint: Run ESLint
-
-## Authentication and Roles
-
-Primary roles:
-
-- officer
-- dispatch
-- supervisor
-- command_staff
-
-Protected API routes require:
-
-```http
-Authorization: Bearer <token>
-```
+- The frontend currently calls the backend using hardcoded URLs at http://localhost:3001 in multiple pages. Run both apps on their default local ports unless you update those fetch URLs.
+- If demo login returns invalid credentials, reseed demo users from the backend scripts.
+- If the backend cannot connect to the database, verify `DATABASE_URL` and that your database is reachable.
+- If CORS issues appear, confirm `FRONTEND_URL` matches your frontend origin.
 
 ## API and Additional Docs
 
-Backend docs are in info-core-2-backend:
+Backend docs are in `info-core-2-backend`:
 
-- API_DOCUMENTATION.md: Endpoint reference
-- CRUD_ROUTES_README.md: CRUD implementation and usage
-- NEON_MIGRATION_GUIDE.md: Neon migration workflow
-- test-requests.http / test.http: Request samples for API testing
-
-## Troubleshooting
-
-- If demo login returns invalid credentials, run:
-
-```bash
-cd info-core-2-backend
-npm run seed:demo-users
-```
-
-- If the backend cannot connect to the database, verify DATABASE_URL and that your database is reachable.
-- If CORS issues appear, confirm FRONTEND_URL matches your frontend origin.
-
-## Deployment Notes
-
-- Backend is configured for environment-based port and DB configuration.
-- For production, set a strong JWT_SECRET and production-grade DATABASE_URL.
-- If you move frontend/backend origins, update CORS and frontend API URLs accordingly.
+- `API_DOCUMENTATION.md`: Endpoint reference
+- `CRUD_ROUTES_README.md`: CRUD implementation and usage
+- `NEON_MIGRATION_GUIDE.md`: Neon migration workflow
+- `test-requests.http` / `test.http`: Request samples for API testing
 
 ## License
 
