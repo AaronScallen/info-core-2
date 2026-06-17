@@ -28,6 +28,13 @@ Info Core 2 is designed around day-to-day operational visibility and administrat
 
 ## Demo Video
 
+Use this space to show the app in action. GitHub README files do not reliably render an embedded video player, so the most dependable option is a clickable thumbnail that opens the demo clip.
+
+[![Watch the demo](info-core-front/public/6pt_InfoCore.png)](demo-media/InfoCore.mp4)
+
+If you want to link directly to the file on GitHub instead, use:
+
+[Watch the demo video](demo-media/InfoCore.mp4)
 
 ## Repository Layout
 
