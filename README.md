@@ -28,20 +28,6 @@ Info Core 2 is designed around day-to-day operational visibility and administrat
 
 ## Demo Video
 
-Use this space to show the app in action. The clip is stored in the repo at `demo-media/InfoCore.mp4`, and the raw GitHub URL below is the most reliable way to reference it in the remote README.
-
-```html
-<video controls width="100%">
-  <source src="https://raw.githubusercontent.com/AaronScallen/info-core-2/main/demo-media/InfoCore.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-```
-
-If GitHub does not render the player in the README view, use this direct link instead:
-
-```markdown
-[Watch the demo video](https://raw.githubusercontent.com/AaronScallen/info-core-2/main/demo-media/InfoCore.mp4)
-```
 
 ## Repository Layout
 
