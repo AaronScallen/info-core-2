@@ -17,25 +17,6 @@ Info Core 2 is designed around day-to-day operational visibility and administrat
 - Database export, import, migration, and reset utilities for managing data across environments
 - Drizzle-powered schema management with PostgreSQL/Neon support
 
-## Product Highlights
-
-- Built as a split frontend/backend application for clear separation of concerns
-- Uses TypeScript across the stack for maintainability and safer iteration
-- Structured for internal operations, demonstrations, and sales presentations
-- Supports operational workflows that can be shown live in a short demo or sales walkthrough
-- Includes supporting scripts and documentation for database migration and seeded demo access
-- Designed to present as a practical, usable system rather than a static prototype
-
-## Demo Video
-
-Use this space to show the app in action. GitHub README files do not reliably render an embedded video player, so the most dependable option is a clickable thumbnail that opens the demo clip.
-
-[![Watch the demo](info-core-front/public/6pt_InfoCore.png)](demo-media/InfoCore.mp4)
-
-If you want to link directly to the file on GitHub instead, use:
-
-[Watch the demo video](demo-media/InfoCore.mp4)
-
 ## Repository Layout
 
 ```text
